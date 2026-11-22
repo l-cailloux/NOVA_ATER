@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mods • NOVA ATER (Fabric 1.21.1)</title>
+  <meta name="description" content="Catalogue complet des 132 mods du serveur Minecraft NOVA ATER. Recherche, filtres par type (Client, Serveur, Client+Serveur) et par catégories.">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Address Verification Gate Modal (if not yet validated in session) -->
+  <div id="address-gate" class="gate-overlay">
+    <div class="gate-card">
+      <div class="gate-badge">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+        Portail Sécurisé
+      </div>
+      <h2 class="gate-title">Accès au Catalogue des Mods</h2>
+      <p class="gate-subtitle">Veuillez confirmer l'adresse du serveur Minecraft pour déverrouiller l'accès complet.</p>
+
+      <form class="gate-form" onsubmit="return false;">
+        <div class="gate-input-wrap">
+          <input type="text" id="gate-address-input" class="gate-input" placeholder="ex: mon-serveur.aternos.me" autocomplete="off" spellcheck="false">
+        </div>
+        <div id="gate-feedback" class="gate-feedback"></div>
+        <button type="button" id="gate-submit-btn" class="btn btn-primary btn-lg">Valider l'adresse</button>
+      </form>
+
+      <div class="gate-note">
+        Besoin de l'adresse du serveur ? <button type="button" id="gate-hint-btn" class="gate-hint-btn">Renseigner automatiquement l'adresse</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="nav-brand">
+        <div class="nav-logo-icon">
+          <svg viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+        </div>
+        <span>NOVA ATER</span>
+      </a>
+
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="index.html" class="nav-link">Accueil</a></li>
+          <li><a href="index.html#telechargements" class="nav-link">Téléchargements</a></li>
+          <li><a href="mods.html" class="nav-link active">Mods <span class="nav-badge" id="mods-total">132</span></a></li>
+          <li><a href="regles.html" class="nav-link">Règles</a></li>
+          <li><a href="index.html#medal" class="nav-link">Medal Boost</a></li>
+          <li><a href="index.html#discord" class="nav-link">Discord</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <button type="button" class="btn-copy-ip btn-sm copy-ip-trigger" title="Copier l'adresse Minecraft">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+          <span data-config="serverAddress">smpmod-VP4d.aternos.me</span>
+        </button>
+
+        <button type="button" class="mobile-toggle" aria-label="Menu Mobile">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Page Header -->
+  <section class="section" style="padding: 3rem 0 1.5rem; text-align: center;">
+    <div class="container">
+      <span class="section-badge">Catalogue Interactif</span>
+      <h1 class="section-title">Liste des Mods & Extensions</h1>
+      <p class="section-subtitle" style="max-width: 700px; margin: 0 auto;">
+        Découvrez l'ensemble des mods intégrés à NOVA ATER. Utilisez la recherche instantanée et les filtres pour explorer par type de mod ou par catégorie d'aventure.
+      </p>
+    </div>
+  </section>
+
+  <!-- Mod Explorer Main Section -->
+  <main class="section" style="padding-top: 1rem;">
+    <div class="container">
+      
+      <!-- Filter & Search Controls -->
+      <div class="explorer-controls">
+        <!-- Search Bar -->
+        <div class="search-bar-wrap">
+          <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          <input type="text" id="mod-search" class="search-input" placeholder="Rechercher un mod par nom, auteur, mot-clé ou description..." autocomplete="off">
+          <button type="button" id="mod-search-clear" class="search-clear" title="Effacer la recherche">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+          </button>
+        </div>
+
+        <!-- Filter by Item Type (Mods vs Resource Packs vs Shaders) -->
+        <div class="filter-group-title">Nature de l'extension</div>
+        <div id="item-type-filters" class="filter-row" style="margin-bottom: 1.25rem;">
+          <button type="button" class="filter-pill active" data-itemtype="Tous">
+            <span>✨ Tout afficher</span> <span class="pill-count">132</span>
+          </button>
+          <button type="button" class="filter-pill" data-itemtype="Mod">
+            <span>📦 Mods</span> <span class="pill-count">110</span>
+          </button>
+          <button type="button" class="filter-pill" data-itemtype="Pack de Ressources">
+            <span>🎨 Packs de Ressources</span> <span class="pill-count">17</span>
+          </button>
+          <button type="button" class="filter-pill" data-itemtype="Shader">
+            <span>☀️ Shaders</span> <span class="pill-count">5</span>
+          </button>
+        </div>
+
+        <!-- Filter by Type -->
+        <div class="filter-group-title">Filtrer par compatibilité</div>
+        <div id="type-filters" class="filter-row">
+          <button type="button" class="filter-pill active" data-type="Tous">Tous</button>
+          <button type="button" class="filter-pill type-client" data-type="Client">Client</button>
+          <button type="button" class="filter-pill type-server" data-type="Serveur">Serveur</button>
+          <button type="button" class="filter-pill" data-type="Client + Serveur">Client + Serveur</button>
+        </div>
+
+        <!-- Filter by Category -->
+        <div class="filter-group-title" style="margin-top: 1.25rem;">Filtrer par catégorie</div>
+        <div id="category-filters" class="filter-row">
+          <button type="button" class="filter-pill active" data-cat="Tous">Toutes les catégories</button>
+          <button type="button" class="filter-pill" data-cat="Graphismes">Graphismes</button>
+          <button type="button" class="filter-pill" data-cat="Optimisation">Optimisation</button>
+          <button type="button" class="filter-pill" data-cat="Gameplay">Gameplay</button>
+          <button type="button" class="filter-pill" data-cat="Aventure">Aventure</button>
+          <button type="button" class="filter-pill" data-cat="Exploration">Exploration</button>
+          <button type="button" class="filter-pill" data-cat="Décoration">Décoration</button>
+          <button type="button" class="filter-pill" data-cat="Technologie">Technologie</button>
+          <button type="button" class="filter-pill" data-cat="Combat">Combat</button>
+          <button type="button" class="filter-pill" data-cat="Utilitaire">Utilitaire</button>
+          <button type="button" class="filter-pill" data-cat="Dimension">Dimension</button>
+          <button type="button" class="filter-pill" data-cat="Atmosphère">Atmosphère</button>
+          <button type="button" class="filter-pill" data-cat="Autre">Autre</button>
+        </div>
+      </div>
+
+      <!-- Results stats bar -->
+      <div class="results-bar">
+        <div>
+          Affichage de <strong id="mods-count">...</strong> mod(s)
+        </div>
+        <div style="font-size: 0.85rem; color: var(--text-muted);">
+          Généré dynamiquement depuis <code style="color: var(--accent-cyan);">data/mods.json</code>
+        </div>
+      </div>
+
+      <!-- Dynamic Cards Grid -->
+      <div id="mods-grid" class="mods-grid">
+        <!-- Rendered by JavaScript -->
+        <div class="mods-empty">
+          <p>Chargement des mods en cours...</p>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h4>NOVA ATER</h4>
+          <p>Serveur Minecraft moddé Fabric 1.21.1 hébergé sur Aternos.</p>
+          <div style="font-family: monospace; color: var(--accent-cyan); font-size: 0.9rem;">
+            smpmod-VP4d.aternos.me
+          </div>
+        </div>
+
+        <div>
+          <h5 class="footer-title">Navigation</h5>
+          <ul class="footer-links">
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="index.html#telechargements">Téléchargements</a></li>
+            <li><a href="mods.html">Liste des Mods</a></li>
+            <li><a href="regles.html">Règles du Serveur</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h5 class="footer-title">Liens Utiles</h5>
+          <ul class="footer-links">
+            <li><a href="https://discord.gg/SxjV5pT9YZ" target="_blank" rel="noopener noreferrer" data-config-href="discordUrl">Discord</a></li>
+            <li><a href="https://www.curseforge.com/minecraft/modpacks/nova-ater" target="_blank" rel="noopener noreferrer" data-config-href="curseforgeClientUrl">CurseForge Client</a></li>
+            <li><a href="https://www.curseforge.com/minecraft/modpacks/nova-ater-serv" target="_blank" rel="noopener noreferrer" data-config-href="curseforgeServerUrl">CurseForge Serveur</a></li>
+            <li><a href="https://aternos.medal.tv/fr-fr?utm_campaign=mc_aternos&utm_content=promocarousel" target="_blank" rel="noopener noreferrer" data-config-href="medalBoostUrl">Medal Boost</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h5 class="footer-title">Informations</h5>
+          <p style="font-size: 0.85rem; line-height: 1.6; color: var(--text-muted); margin-bottom: 0.75rem;">
+            Toutes les extensions sont configurées pour Fabric 1.21.1. Consultez le fichier <code>data/mods.json</code> pour voir les configurations détaillées.
+          </p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>© 2026 NOVA ATER • Tous droits réservés.</div>
+        <div>Compatible Minecraft Fabric 1.21.1.</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="config.js"></script>
+  <script src="data/mods.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      new ModExplorer({
+        gridId: 'mods-grid',
+        counterId: 'mods-count',
+        totalId: 'mods-total',
+        searchId: 'mod-search',
+        clearId: 'mod-search-clear',
+        itemTypeFilterId: 'item-type-filters',
+        typeFilterId: 'type-filters',
+        categoryFilterId: 'category-filters'
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Règles du Serveur • NOVA ATER (Fabric 1.21.1)</title>
+  <meta name="description" content="Règles officielles et charte de bonne conduite du serveur Minecraft NOVA ATER : respect, triche, grief, sanctions et utilisation des mods.">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Address Verification Gate Modal -->
+  <div id="address-gate" class="gate-overlay">
+    <div class="gate-card">
+      <div class="gate-badge">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+        Portail Sécurisé
+      </div>
+      <h2 class="gate-title">Accès au Portail</h2>
+      <p class="gate-subtitle">Veuillez confirmer l'adresse du serveur Minecraft pour continuer.</p>
+
+      <form class="gate-form" onsubmit="return false;">
+        <div class="gate-input-wrap">
+          <input type="text" id="gate-address-input" class="gate-input" placeholder="ex: mon-serveur.aternos.me" autocomplete="off" spellcheck="false">
+        </div>
+        <div id="gate-feedback" class="gate-feedback"></div>
+        <button type="button" id="gate-submit-btn" class="btn btn-primary btn-lg">Valider l'adresse</button>
+      </form>
+
+      <div class="gate-note">
+        Besoin de l'adresse du serveur ? <button type="button" id="gate-hint-btn" class="gate-hint-btn">Renseigner automatiquement l'adresse</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="nav-brand">
+        <div class="nav-logo-icon">
+          <svg viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+        </div>
+        <span>NOVA ATER</span>
+      </a>
+
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="index.html" class="nav-link">Accueil</a></li>
+          <li><a href="index.html#telechargements" class="nav-link">Téléchargements</a></li>
+          <li><a href="mods.html" class="nav-link">Mods <span class="nav-badge">132</span></a></li>
+          <li><a href="regles.html" class="nav-link active">Règles</a></li>
+          <li><a href="index.html#medal" class="nav-link">Medal Boost</a></li>
+          <li><a href="index.html#discord" class="nav-link">Discord</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <button type="button" class="btn-copy-ip btn-sm copy-ip-trigger" title="Copier l'adresse Minecraft">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+          <span data-config="serverAddress">smpmod-VP4d.aternos.me</span>
+        </button>
+
+        <button type="button" class="mobile-toggle" aria-label="Menu Mobile">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Page Header -->
+  <section class="section" style="padding: 3.5rem 0 2rem; text-align: center;">
+    <div class="container">
+      <span class="section-badge">📜 Règlement</span>
+      <h1 class="section-title">Règlement du Serveur NOVA ATER</h1>
+      <p class="section-subtitle" style="max-width: 680px; margin: 0 auto;">
+        Des règles simples pour que tout le monde puisse jouer et progresser.
+      </p>
+    </div>
+  </section>
+
+  <!-- Rules Main -->
+  <main class="section" style="padding-top: 1rem;">
+    <div class="container">
+
+      <!-- Résumé rapide -->
+      <div class="rules-summary-banner">
+        <span style="font-size: 1.4rem;">👉</span>
+        <p><strong>Piller est autorisé. Ruiner l'expérience d'un joueur ne l'est pas.</strong></p>
+      </div>
+
+      <div class="rules-grid">
+
+        <!-- 1. Pillage et bases -->
+        <div class="rule-category-card rule-pillage">
+          <div class="rule-header">
+            <div class="rule-icon rule-icon--sword">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M14.5 17.5L3 6V3h3l11.5 11.5"/><path d="m13 19 2-2"/><path d="m19 13-2 2"/><path d="M19 3l2 2-6.5 6.5"/><path d="m5 19 2-2"/></svg>
+            </div>
+            <h2 class="rule-title">⚔️ 1. Pillage et bases</h2>
+          </div>
+          <p style="color: var(--text-secondary); font-size: 0.93rem; margin-bottom: 1.2rem; line-height: 1.6;">
+            Le pillage des bases est <strong style="color: var(--text-primary);">autorisé</strong>, mais il doit rester raisonnable et ne pas avoir pour but de détruire complètement le jeu d'un joueur.
+          </p>
+
+          <div class="rule-two-cols">
+            <!-- Autorisé -->
+            <div class="rule-col-allowed">
+              <div class="rule-col-title">
+                <span>✅</span> Autorisé
+              </div>
+              <ul class="rule-list rule-list--check">
+                <li>Fouiller les coffres d'une base.</li>
+                <li>Prendre des ressources ou objets présents dans les coffres.</li>
+                <li>Ouvrir les portes, trappes et autres accès pour entrer dans une base.</li>
+                <li>Casser certains blocs pour accéder à une zone protégée ou cachée.</li>
+                <li>Prendre les objets utiles trouvés dans une base.</li>
+              </ul>
+            </div>
+            <!-- Interdit -->
+            <div class="rule-col-forbidden">
+              <div class="rule-col-title">
+                <span>❌</span> Interdit
+              </div>
+              <ul class="rule-list rule-list--cross">
+                <li>Détruire entièrement une base sans raison.</li>
+                <li>Vider ou casser volontairement tous les coffres pour empêcher le joueur de récupérer ses affaires.</li>
+                <li>Détruire les constructions uniquement pour faire perdre du temps au propriétaire.</li>
+                <li>Tuer plusieurs fois un même joueur uniquement pour l'empêcher de jouer.</li>
+                <li>Détruire les farms, machines ou installations sans raison.</li>
+                <li>S'acharner sur un joueur ou une équipe après un premier pillage.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. Destruction -->
+        <div class="rule-category-card">
+          <div class="rule-header">
+            <div class="rule-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+            </div>
+            <h2 class="rule-title">💥 2. Destruction</h2>
+          </div>
+          <ul class="rule-list">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>La destruction doit rester <strong>limitée au nécessaire</strong>. Casser quelques blocs pour entrer dans une base peut être autorisé, mais transformer toute la base en ruines ne l'est pas.</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Le but du pillage est de <strong>récupérer des ressources</strong>, pas de supprimer la progression d'un joueur.</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- 3. Bases -->
+        <div class="rule-category-card">
+          <div class="rule-header">
+            <div class="rule-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+            </div>
+            <h2 class="rule-title">🏠 3. Bases</h2>
+          </div>
+          <ul class="rule-list">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Il est interdit de chercher volontairement à <strong>empêcher définitivement</strong> un joueur de reconstruire ou de jouer.</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Les bases peuvent être cachées, protégées et défendues, mais <strong>aucune base n'est considérée comme totalement inviolable</strong>.</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- 4. PvP -->
+        <div class="rule-category-card">
+          <div class="rule-header">
+            <div class="rule-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+            </div>
+            <h2 class="rule-title">⚔️ 4. PvP</h2>
+          </div>
+          <ul class="rule-list">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Le PvP est <strong>autorisé</strong>, mais le <strong>spawn-kill</strong> et le harcèlement répété d'un joueur sont interdits.</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Après un combat ou un raid, laissez au joueur la possibilité de <strong>repartir et de reconstruire</strong>.</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- 5. Abus et acharnement -->
+        <div class="rule-category-card">
+          <div class="rule-header">
+            <div class="rule-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"></line></svg>
+            </div>
+            <h2 class="rule-title">🚫 5. Abus et acharnement</h2>
+          </div>
+          <p style="color: var(--text-secondary); font-size: 0.93rem; margin-bottom: 1rem; line-height: 1.6;">
+            Même lorsqu'une action est techniquement autorisée, elle peut être sanctionnée si elle constitue un abus. Exemples :
+          </p>
+          <ul class="rule-list">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Raids répétés sur la même personne.</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Destruction systématique de la même base.</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Vol de toutes les ressources d'un joueur à plusieurs reprises.</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Empêcher volontairement un joueur de progresser.</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Utiliser une faille ou un bug pour contourner les protections.</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- 6. Esprit du serveur -->
+        <div class="sanctions-card">
+          <h2 class="sanctions-title">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+            🤝 6. Esprit du serveur
+          </h2>
+          <p style="color: #cbd5e1; font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.5rem;">
+            Le serveur est basé sur le <strong style="color: var(--accent-cyan);">PvP, l'exploration et le pillage</strong>, mais tout le monde doit pouvoir profiter du serveur.
+          </p>
+
+          <div class="rule-quote-banner">
+            👉 <strong>Piller est autorisé. Ruiner l'expérience d'un joueur ne l'est pas.</strong>
+          </div>
+
+          <p style="color: #94a3b8; font-size: 0.9rem; line-height: 1.6; margin-top: 1.2rem;">
+            En cas de litige, les administrateurs peuvent intervenir et décider si un raid ou une destruction était excessif.
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Contact Discord -->
+      <div style="margin-top: 3rem; text-align: center;">
+        <p style="color: var(--text-secondary); margin-bottom: 1rem;">
+          Un litige, une question sur une règle ou un signalement ?
+        </p>
+        <a href="https://discord.gg/SxjV5pT9YZ" target="_blank" rel="noopener noreferrer" class="btn btn-discord btn-lg" data-config-href="discordUrl">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994.021-.041.001-.09-.041-.106a13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.929 1.793 8.18 1.793 12.061 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.894.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.028zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
+          Contacter le Staff sur Discord
+        </a>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h4>NOVA ATER</h4>
+          <p>Serveur Minecraft moddé Fabric 1.21.1 hébergé sur Aternos.</p>
+          <div style="font-family: monospace; color: var(--accent-cyan); font-size: 0.9rem;">
+            smpmod-VP4d.aternos.me
+          </div>
+        </div>
+
+        <div>
+          <h5 class="footer-title">Navigation</h5>
+          <ul class="footer-links">
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="index.html#telechargements">Téléchargements</a></li>
+            <li><a href="mods.html">Liste des Mods</a></li>
+            <li><a href="regles.html">Règles du Serveur</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h5 class="footer-title">Liens Utiles</h5>
+          <ul class="footer-links">
+            <li><a href="https://discord.gg/SxjV5pT9YZ" target="_blank" rel="noopener noreferrer" data-config-href="discordUrl">Discord</a></li>
+            <li><a href="https://www.curseforge.com/minecraft/modpacks/nova-ater" target="_blank" rel="noopener noreferrer" data-config-href="curseforgeClientUrl">CurseForge Client</a></li>
+            <li><a href="https://www.curseforge.com/minecraft/modpacks/nova-ater-serv" target="_blank" rel="noopener noreferrer" data-config-href="curseforgeServerUrl">CurseForge Serveur</a></li>
+            <li><a href="https://aternos.medal.tv/fr-fr?utm_campaign=mc_aternos&utm_content=promocarousel" target="_blank" rel="noopener noreferrer" data-config-href="medalBoostUrl">Medal Boost</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h5 class="footer-title">Informations</h5>
+          <p style="font-size: 0.85rem; line-height: 1.6; color: var(--text-muted);">
+            Le présent règlement s'applique à tous les membres sans exception pour préserver la convivialité du serveur.
+          </p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>© 2026 NOVA ATER • Tous droits réservés.</div>
+        <div>Charte mise à jour pour Fabric 1.21.1.</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="config.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
